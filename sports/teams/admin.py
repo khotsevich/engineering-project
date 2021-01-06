@@ -16,6 +16,7 @@ class PlayerAdmin(admin.ModelAdmin):
 class TeamAdmin(admin.ModelAdmin):
     list_display = ('name', 'type')
     search_fields = ('name',)
+    list_filter = ('type',)
 
 
 admin.site.register(Type, TypeAdmin)
