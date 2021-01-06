@@ -32,6 +32,9 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'category.apps.CategoryConfig',
+    'teams.apps.TeamsConfig',
+    'events.apps.EventsConfig',
+    'podcasts.apps.PodcastsConfig',
     'news.apps.NewsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
