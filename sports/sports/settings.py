@@ -26,7 +26,7 @@ SECRET_KEY = '24e&=a635p74a!dza@d2cy_w(5o1fj5l1wj-l$=hb=p1pdwan#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['enge-project.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['enge-project.herokuapp.com', '127.0.0.1', 'news.std-927.ist.mospolytech.ru']
 
 
 # Application definition
