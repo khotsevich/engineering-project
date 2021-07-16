@@ -1,3 +1,8 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import Event
+
+def events(request):
+	events = Event.objects.all()
+	
+	return render(request, 'events/list.html', {'events': events})

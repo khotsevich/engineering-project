@@ -29,7 +29,7 @@ class Player(models.Model):
 
 class Team(models.Model):
     name = models.CharField(max_length=64, verbose_name='Название')
-    logo = models.ImageField(upload_to='photos/%Y/%m/%d/', verbose_name='Логотип')
+    logo = models.ImageField(upload_to='photos/%Y/%m/%d/', verbose_name='Логотип', blank=True)
     players = models.ManyToManyField(Player, verbose_name='Игроки')
     type = models.ForeignKey(Type, on_delete=models.CASCADE, verbose_name='Тип команды')
 
