@@ -1,19 +1,23 @@
-from rest_framework.response import Response
-from rest_framework.views import APIView
-
+from django.http import Http404, HttpResponseRedirect
+from django.shortcuts import render
 from .models import News
-from .serializers import NewsSerializer
+from category.models import Category
 
+def news(request):
+	title = request.GET.get('title', '')
+	category = request.GET.get('category', '')
+	try:
+		news = News.objects.filter(category__title__icontains=category, title__icontains=title)
+		categoryes = Category.objects.all()
+	except:
+		raise Http404('Новость не найдена')
 
-class NewsView(APIView):
-    def get(self, request):
-        news = News.objects.all()
-        serializer = NewsSerializer(news, many=True)
-        return Response({"news": serializer.data})
+	return render(request, 'news/list.html', {'news': news, 'categoryes': categoryes})
 
-    def post(self, request):
-        news = request.data.get('news')
-        serializer = NewsSerializer(data=news)
-        if serializer.is_valid(raise_exception=True):
-            news_saved = serializer.save()
-        return Response({"success": "News '{}' created successfully".format(news_saved.title)})
+def detail(request, id):
+	try:
+		news = News.objects.get(id = id)
+	except:
+		raise Http404('Новость не найдена')
+
+	return render(request, 'news/detail.html', {'news': news})

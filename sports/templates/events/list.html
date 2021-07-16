@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Мероприятия{% endblock title %}
+
+{% block content %}
+	{% for e in events %}
+		<div class="card mt-3">
+			<div class="card-header d-flex justify-content-between">
+				<div>{{e.name}}</div>
+				<div>{{e.status}}</div>
+			</div>
+			<div class="card-body">
+				<p class="card-text">
+				Команды: {{e.teams}}
+				</p>
+				<a href="" class="btn btn-primary">Подробнее</a>
+			</div>
+		</div>
+	{% endfor %}
+{% endblock content %}
